@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="index">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+      <link rel="stylesheet" href="css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Google fonts - Popppins for copy-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+      <script type="text/javascript" src="js/angular.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="js/angular-cookies.js"></script>
+      <link href="css/sweetalert.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript" src="js/sweetalert-dev.js"></script>
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  </head>
+  <body ng-controller="indexController">
+    <div class="d-flex align-items-stretch">
+      <div id="sidebar" class="sidebar py-3">
+        <ul class="sidebar-menu list-unstyled">
+              <li class="sidebar-list-item"><a href="index" class="sidebar-link text-muted active"><i class="o-sales-up-1 mr-3 text-gray"></i><span>数据分析</span></a></li>
+              <li class="sidebar-list-item"><a href="tables" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>员工管理</span></a></li>
+              <li class="sidebar-list-item"><a href="forms" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>绩效管理</span></a></li>
+            <li class="sidebar-list-item"><a href="shenhe" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>审核管理</span></a></li>
+            <li class="sidebar-list-item"><a href="login" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray"></i><span>退出系统</span></a></li>
+        </ul>
+      </div>
+      <div class="page-holder w-100 d-flex flex-wrap">
+        <div class="container-fluid px-xl-5">
+          <section class="py-5">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="card mb-4">
+                          <div class="card-header">
+                              <h2 class="h6 text-uppercase mb-0">各类绩效员工占比实时监控</h2>
+                          </div>
+                          <div class="card-body">
+                              <p class="mb-3 text-gray">共有A+,A,B,C,D五种</p>
+                              <div class="chart-holder">
+                                  <canvas id="doughnutChartExample"></canvas>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="card mb-4">
+                          <div class="card-header">
+                              <h2 class="h6 text-uppercase mb-0">待处理审核占比实时查询</h2>
+                          </div>
+                          <div class="card-body">
+                              <p class="mb-3 text-gray">您有部分采销凭证需要审核,请尽快处理</p>
+                              <div class="chart-holder">
+                                  <canvas id="pieChartExample"></canvas>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <div class="row mb-4">
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-header" >
+                    <h2 class="h6 text-uppercase mb-0">员工性别占比</h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-holder">
+                      <canvas id="pieChart1"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h2 class="h6 text-uppercase mb-0">员工等级占比</h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-holder">
+                      <canvas id="pieChart2"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="card">
+                  <div class="card-header">
+                    <h2 class="h6 mb-0 text-uppercase">各地员工实时采销质量监控</h2>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-5 text-gray">根据各地得分计算</p>
+                    <div class="chart-holder mt-5 mb-5">
+                      <canvas id="barChartExample1"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">毕业设计 &copy; 2019-2020</p>
+              </div>
+              <div class="col-md-6 text-center text-md-right text-gray-400">
+                <p class="mb-0">Copyright &copy; 2020 采销个人绩效考核系统 </p>
+                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/js.cookie.min.js"></script>
+    <script src="js/charts-custom.js"></script>
+    <script src="js/front.js"></script>
+  </body>
+</html>

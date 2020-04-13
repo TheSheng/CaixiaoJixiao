@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.java.mapper.StaffMapper">
+
+
+    <select id="getRandomOne"  resultType="com.bishe.java.pojo.Staff">
+        select * from bishe_staff ORDER BY RAND() limit 1;
+
+    </select>
+    <select id="getRandomGood"  resultType="java.util.HashMap">
+        select * from bishe_goods ORDER BY RAND() limit 1;
+
+    </select>
+    <select id="selectId" resultType="java.lang.Integer">
+        select id from bishe_staff
+    </select>
+    <select id="getSex" resultType="java.lang.Integer">
+        select count(1) from bishe_staff group by sex
+    </select>
+    <select id="getType" resultType="java.lang.Integer">
+        select count(1) from bishe_staff group by type
+    </select>
+    <select id="getJiXIaoZhanBi" resultType="java.util.HashMap">
+        select type ,count(1) as value from bishe_jixiao group by type
+    </select>
+    <select id="getShenhe" resultType="java.util.HashMap">
+         select hasCheck as type ,count(1) as value from bishe_caixiao group by hasCheck    </select>
+    <select id="selectByMaps" parameterType="java.util.HashMap" resultType="com.bishe.java.pojo.Staff">
+        select * from bishe_staff
+        <trim prefix="where" suffixOverrides="and">
+             <if test="map.name != null and  map.name != '' ">
+                 name like '%${map.name}%' and
+             </if>
+            <if test="map.sex != null and  map.sex != '' ">
+                sex like '%${map.sex}%' and
+            </if>
+            <if test="map.addr != null and  map.addr != '' ">
+                addr like '%${map.addr}%' and
+            </if>
+            <if test="map.type != null and  map.type != '' ">
+                type like '%${map.type}%' and
+            </if>
+            <if test="map.phone != null and  map.phone != '' ">
+                phone like '%${map.phone}%' and
+            </if>
+        </trim>
+    </select>
+    <delete id="deleteByStaffId" parameterType="java.lang.Integer">
+        delete from bishe_caixiao where staffId=#{staffId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.java.mapper.JiXIaoMapper">
+
+    <delete id="deleteByStaffId" parameterType="java.lang.Integer">
+        delete from bishe_jixiao where staffId=#{staffId}
+    </delete>
+    <select id="selectByStaffId" parameterType="java.lang.Integer" resultType="com.bishe.java.pojo.JiXiao">
+        select * from bishe_jixiao where staffId=#{staffId}
+    </select>
+    <select id="selectAll" resultType="com.bishe.java.pojo.JiXiao">
+        select * from bishe_jixiao order by score desc
+    </select>
+    <select id="selectByMaps" resultType="com.bishe.java.pojo.JiXiao" parameterType="java.util.HashMap">
+        select * from bishe_jixiao
+        <trim prefix="where" suffixOverrides="and">
+            <if test="map.staffId != null and  map.staffId != '' ">
+                staffId like '%${map.staffId}%' and
+            </if>
+            <if test="map.score != null and  map.score != '' ">
+                score like '%${map.score}%' and
+            </if>
+            <if test="map.type != null and  map.type != '' ">
+                type like '%${map.type}%' and
+            </if>
+        </trim>
+        order by score desc
+    </select>
+
+
+</mapper>
